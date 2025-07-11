@@ -24,6 +24,7 @@ public class CatTest {
 
     @BeforeEach
     public void init() {
+
         MockitoAnnotations.openMocks(this);
     }
 
