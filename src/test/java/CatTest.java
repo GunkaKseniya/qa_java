@@ -35,15 +35,24 @@ public class CatTest {
         assertEquals(expected, actual, "Кот должен говорить Мяу");
     }
 
+    // Проверка верного возврата данных методом getFood
     @Test
-    void testGetFood() throws Exception {
+    void testGetFoodReturnsCorrectData() throws Exception {
         List<String> food = List.of("Мышь", "Рыба");
-
         when(mockFeline.eatMeat()).thenReturn(food);
 
         List<String> result = cat.getFood();
 
         assertEquals(food, result);
+    }
+
+    // Проверка вызова метода eatMeat один раз
+    @Test
+    void testGetFoodCallsEatMeatOnce() throws Exception {
+        when(mockFeline.eatMeat()).thenReturn(List.of("Мышь", "Рыба"));
+
+        cat.getFood();
+
         verify(mockFeline, times(1)).eatMeat();
     }
 }

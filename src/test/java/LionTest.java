@@ -19,26 +19,43 @@ public class LionTest {
     Feline mockFeline;
 
     @Test
-    void testGetKittensDelegation() throws Exception {
+    void testGetKittensReturnsCorrectValue() throws Exception {
         when(mockFeline.getKittens()).thenReturn(3);
         Lion lion = new Lion("Самец", mockFeline);
 
         int kittens = lion.getKittens();
 
         assertEquals(3, kittens);
+    }
+
+    @Test
+    void testGetKittensInvokesFelineMethod() throws Exception {
+        when(mockFeline.getKittens()).thenReturn(3);
+        Lion lion = new Lion("Самец", mockFeline);
+
+        lion.getKittens();
+
         verify(mockFeline).getKittens();
     }
 
     @Test
-    void testGetFoodDelegation() throws Exception {
+    void testGetFoodReturnsCorrectData() throws Exception {
         List<String> food = List.of("Антилопа", "Зебра");
-
         when(mockFeline.getFood("Хищник")).thenReturn(food);
         Lion lion = new Lion("Самец", mockFeline);
 
         List<String> result = lion.getFood();
 
         assertEquals(food, result);
+    }
+
+    @Test
+    void testGetFoodInvokesFelineMethod() throws Exception {
+        when(mockFeline.getFood("Хищник")).thenReturn(List.of("Антилопа", "Зебра"));
+        Lion lion = new Lion("Самец", mockFeline);
+
+        lion.getFood();
+
         verify(mockFeline).getFood("Хищник");
     }
 
