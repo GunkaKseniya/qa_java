@@ -11,7 +11,7 @@ public class LionAlex extends Lion {
 
     @Override
     public int getKittens() {
-        return super.getKittens(); // Используем метод из родительского класса
+        return super.getKittens();
     }
 
     public List<String> getFriends() {
